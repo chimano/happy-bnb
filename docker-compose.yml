@@ -3,6 +3,8 @@ services:
     happybnb:
         container_name: happybnb
         restart: always
+        volumes:
+            - ./server:/app
         build: ./server
         ports:
             - '3000:8080'
