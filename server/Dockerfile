@@ -4,7 +4,7 @@ FROM node:11
 # Set the working directory to /app
 WORKDIR /app
 
-COPY package.json ./
+COPY package*.json ./
 
 
 
