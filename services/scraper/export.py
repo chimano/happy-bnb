@@ -19,7 +19,7 @@ if __name__ == '__main__':
     processed_data = [
         {'rating': float(entry[0]),
          'latitude': float(entry[1]),
-         'longitude': float(entry[1]),
+         'longitude': float(entry[2]),
          'category': categorize(entry)}
         for entry in data.values()
     ]
