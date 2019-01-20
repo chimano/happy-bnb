@@ -16,3 +16,6 @@ services:
             - ./data:/data/db
         ports:
             - '27016:27017'
+        environment:
+            - MONGODB_INITDB_ROOT_USERNAME=hackatown2019
+            - MONGODB_INITDB_ROOT_PASSWORD=password
