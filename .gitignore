@@ -5,3 +5,5 @@ package-*.json
 node_modules
 data
 .env
+eggs.csv
+crime_data.csv
