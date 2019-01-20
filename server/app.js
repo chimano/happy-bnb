@@ -14,5 +14,9 @@ app.get('/', (req, res) => {
     res.send('Back-end up and running');
 }); 
 
+app.get('/rentals', (req, res) => {
+    //TODO
+});
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
