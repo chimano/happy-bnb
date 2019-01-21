@@ -1,21 +1,35 @@
-const express       = require('express');
-const mongoose      = require('mongoose');
-// require('dotenv').config();
+require('dotenv').config()
 
-const PORT          = 8080;
-const HOST          = '0.0.0.0';
-const MONGO_DOCKER  = 'mongodb://mongo:27017'
+const express               = require('express');
+const PORT                  = 8080;
+const HOST                  = '0.0.0.0';
+const rentals               = require('./db/rentalGateway')
 
-const app           = express();
+const app                   = express();
 
-mongoose.connect(MONGO_DOCKER);
 
 app.get('/', (req, res) => {
     res.send('Back-end up and running');
 }); 
 
 app.get('/rentals', (req, res) => {
-    //TODO
+    var c = req.query.category;
+    rentals.getAllRentals(c, result => {
+        if (result.length === 0){
+            res.status(200).send({
+                message: 'No items in collection'
+            });
+        } else if (result.length !== 0){
+            res.status(200).send({
+                result: result
+            });
+        } else {
+            res.status(500).send({
+                message: 'Internal server error, check your permissions to request this db'
+            });
+        }   
+        return;
+    });
 });
 
 app.listen(PORT, HOST);
